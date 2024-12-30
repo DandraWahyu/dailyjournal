@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <div class="text-center mb-3">
               <img src="https://i.pinimg.com/236x/03/d1/40/03d14034bc5b992634fa2d5a10f5d80a.jpg" alt="Your Logo" class="h1 display-4" />
             </a>
-            <p>My Daily Journal</p>
+            <p>Welcome to My Daily Journal</p>
             <hr />
           </div>
 
