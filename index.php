@@ -83,7 +83,7 @@ include "koneksi.php";
             <img src="https://tse1.mm.bing.net/th?id=OIP.3LlNwB3HmPBrvRe1NkBFFgHaHa&pid=Api&P=0&h=180" class="img-fluid" width="300" alt="Hero Image">
             <div>
                 <h1 class="fw-bold display-4">Selamat Datang Di Jurnal Saya</h1>
-                <h4 class="lead display-6">Tugas ke 3</h4>
+                <h4 class="lead display-6">Hohohoho</h4>
                 <h6>
                     <span id="tanggal"></span>
                     <span id="jam"></span>
@@ -131,31 +131,36 @@ include "koneksi.php";
 
 <!-- Gallery Section Start -->
 <section id="gallery" class="p-5 bg-danger-subtle">
-    <div class="container">
-        <h1 class="fw-bold display-4 pb-3">Gallery</h1>
-        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8U1svLSH5QkCAw7UkWAJeVorqQgZ49YLLB3lv1GI2leYV7K9kw4Cqe9cos2KNmKaNI3Y1num-oO9c_eTjmHa0G1szwzegWp3uw8BM27NdGBBKPgMd9FeMUHnMr0-lAf6i5LHFLukJEuOGVPsE288gE3z1jEAuL9LyP7_g4p9dew4ikfY5Uczey5QW/s1080/Instagram%20Windah%209.jpg" class="d-block w-100" alt="Image 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://dailyspin.id/wp-content/uploads/2022/02/Windah-Basudara-1-1068x1068.jpg" class="d-block w-100" alt="Image 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://i.pinimg.com/originals/af/70/7c/af707ccfe220c5183f2478c027797145.jpg" class="d-block w-100" alt="Image 3">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+  <div class="container">
+    <h1 class="fw-bold display-4 pb-3">Gallery</h1>
+    <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <?php
+        $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+        $hasil = $conn->query($sql);
+        $firstItem = true; // Menentukan item pertama sebagai active
+        while ($row = $hasil->fetch_assoc()) {
+        ?>
+          <div class="carousel-item <?= $firstItem ? 'active' : '' ?>">
+            <img src="img/<?= $row["gambar"] ?>" class="d-block w-100" alt="<?= $row["judul"] ?>">
+          </div>
+        <?php
+          $firstItem = false; // Mengubah status active untuk item selanjutnya
+        }
+        ?>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+  </div>
 </section>
+
 <!-- Gallery Section End -->
 
 <!-- Schedule Section Start -->
